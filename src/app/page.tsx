@@ -4,6 +4,17 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 import {Film} from "@/types/ghibli";
 import {getFilms} from "@/lib/ghibli";
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "@/components/ui/carousel"
+import { Card, CardContent } from "@/components/ui/card";
+
+
+
 
 
 
@@ -32,6 +43,7 @@ export default  function Home() {
     
     <main className="p-6  m-10 text-white relative ">
 
+      
        <div className="itens-left w-[50%] max-w-3xl">
         <p>Main page | Fest 2025</p>
         <h1 className="text-5xl font-bold mt-2">Filmes do Studio Ghibli</h1>
@@ -43,24 +55,26 @@ export default  function Home() {
         </p>
       </div>
       
-       <div className="mt-10 overflow-x-auto">
-        <div className="flex gap-4">
-          {filmes.map(filme => (
-            <div
-              key={filme.id}
-              className="min-w-[200px] max-w-[220px] bg-black/40 rounded-xl p-2 flex-shrink-0 cursor-pointer hover:scale-105 transition-transform"
-            >
-              <img
-                src="/placeholder.jpg"
-                alt={filme.title}
-                className="rounded-md w-full h-60 object-cover"
-              />
-              <p className="mt-2 text-center font-semibold">{filme.title}</p>
-            </div>
+        <Carousel className="w-full mt-20">
+        <CarouselContent className="-ml-4">
+          {filmes.map((filme) => (
+            <CarouselItem key={filme.id} className="pl-4 md:basis-1/2 lg:basis-1/3 ">
+              <Card className="bg-white/10 backdrop-blur-lg border border-none text-white rounded-xl">
+                <CardContent className="aspect-w-3 aspect-h-4">
+                  <img
+                    src={`/images/${filme.title.toLowerCase().replace(/\s/g, '-')}.jpg`}
+                    alt={filme.title}
+                    className="rounded-md w-full h-60 object-cover"
+                  />
+                  <p className="mt-2 text-center font-semibold">{filme.title}</p>
+                </CardContent>
+              </Card>
+            </CarouselItem>
           ))}
-        </div>
-      </div>
-
+        </CarouselContent>
+        <CarouselPrevious />
+        <CarouselNext />
+      </Carousel>
     </main>
   </>
   )
