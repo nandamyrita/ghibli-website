@@ -1,8 +1,9 @@
 import Link from "next/link";
+import Image from "next/image";
 export default function Header() {
   return (
     <header className=" ml-10 text-white p-4 flex justify-between items-center">
-        <img className="w-30" src="/logo.svg" alt="logo" />
+        <Image src="/logo.png" alt="Logo" width={100} height={100} />
       
       
 

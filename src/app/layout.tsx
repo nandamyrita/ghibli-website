@@ -13,10 +13,10 @@ export default function RootLayout({
 }>) {
   return (
     <html
-      lang={"pt-br "}
-      suppresshydrationwarning="true"
-      data-lt-installed="true"
-    >
+  lang="pt-br"
+  suppressHydrationWarning
+  data-lt-installed="true"
+>
       <body className=" min-h-screen bg-cover bg-center bg-no-repeat bg-[url('/fundo.jpg')]   ">
         {children}
       </body>
