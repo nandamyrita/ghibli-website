@@ -42,10 +42,11 @@ export default function Home() {
           transition={{ duration: 0.6 }}
         >
           <div className="flex flex-col w-[50%] mt-10">
-          <p>Main page | Fest 2025</p>
+          <p className="text-2xl">Main page | Fest 2025</p>
           <h1 className="text-7xl font-bold mt-2">Filmes do Studio Ghibli</h1>
           <p className="mt-4">
-            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nisi in ea provident molestiae laboriosam amet natus? Inventore aperiam facere laboriosam quas hic, ab voluptas, quisquam veniam temporibus vel, neque nostrum.
+            Prepare-se para embarcar em uma viagem mágica pelo universo encantador dos filmes do Studio Ghibli. Neste festival, você vai explorar mundos repletos de aventura, fantasia e emoção, onde cada história é um convite para sonhar e se inspirar. Desde voos pelos céus em "O Castelo no Céu" até jornadas emocionantes em "A Viagem de Chihiro", o Ghibli Fest 2025 celebra a criatividade, a imaginação e a beleza das narrativas que tocaram gerações.
+            Descubra detalhes dos filmes, conheça os personagens inesquecíveis e mergulhe na arte que transformou simples animações em verdadeiras obras-primas. Seja você fã antigo ou recém-chegado ao mundo Ghibli, esta experiência promete encantar, emocionar e despertar a criança que existe em cada um de nós. Venha viver a magia, sentir a aventura e se apaixonar novamente pelo encanto dos filmes do Studio Ghibli!
           </p>
           </div>
         </motion.div>
