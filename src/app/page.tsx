@@ -60,13 +60,9 @@ export default function Home() {
               >
 
                 <Link href={`/filme/${filme.id}`}>
-                <img
-                  src={`/images/${filme.title
-                    .toLowerCase()
-                    .replace(/\s/g, "-")}.jpg`}
-                  alt={filme.title}
-                  className="rounded-md w-full h-60 object-cover transition-transform duration-300 group-hover:scale-110"
-                />
+                
+                <img className="rounded-md w-full object-cover transition-transform duration-300 group-hover:scale-110" src={filme.image} alt={filme.title} />
+              
 
                 <div className="text-left flex flex-col">
                   <p className="mt-2">{filme.release_date}</p>
