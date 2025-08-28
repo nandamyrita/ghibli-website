@@ -26,15 +26,16 @@ useEffect(() => {
     fetchFilme();
   }, [id]);
 
-  
-
-
 
   if (!filme) return <p> Carregando... </p>;
 
   return (
-    <main className="">
-      <h1> {filme.description} </h1>
+    <main className=" min-h-screen bg-white bg-cover bg-center bg-no-repeat">
+      <img  className="w-full absolute " src={filme.movie_banner} alt={filme.movie_banner} />
+      <div className="relative">
+      <h1 className="text-8xl"> {filme.title} </h1>
+      <p> {filme.description}</p>
+      </div>
       
     </main>
   )

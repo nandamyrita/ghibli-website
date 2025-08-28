@@ -4,6 +4,7 @@ export type Film = {
   original_title: string;
   original_title_romanised?: string;
   image: string;  
+  movie_banner:string;
   description: string;
   director: string;
   producer: string;
