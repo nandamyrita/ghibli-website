@@ -57,6 +57,8 @@ export default function Home() {
                 key={filme.id}
                 className="pl-3 md:basis-1/3 lg:basis-1/4"
               >
+
+                <Link href={`/filme/${filme.id}`}>
                 <img
                   src={`/images/${filme.title
                     .toLowerCase()
@@ -69,6 +71,7 @@ export default function Home() {
                   <p className="mt-2">{filme.release_date}</p>
                   <p className="font-semibold">{filme.title}</p>
                 </div>
+                </Link>
               </CarouselItem>
             ))}
           </CarouselContent>
