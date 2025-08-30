@@ -11,7 +11,7 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "@/components/ui/carousel";
-import { motion } from "motion/react";
+import { motion } from "framer-motion";
 
 export default function Home() {
   const [filmes, setFilmes] = useState<Film[]>([]);
@@ -46,7 +46,7 @@ export default function Home() {
           <h1 className="text-7xl font-bold mt-2">Filmes do Studio Ghibli</h1>
           <p className="mt-4">
             Prepare-se para embarcar em uma viagem mágica pelo universo encantador dos filmes do Studio Ghibli. Neste festival, você vai explorar mundos repletos de aventura, fantasia e emoção, onde cada história é um convite para sonhar e se inspirar. Desde voos pelos céus em "O Castelo no Céu" até jornadas emocionantes em "A Viagem de Chihiro", o Ghibli Fest 2025 celebra a criatividade, a imaginação e a beleza das narrativas que tocaram gerações.
-            Descubra detalhes dos filmes, conheça os personagens inesquecíveis e mergulhe na arte que transformou simples animações em verdadeiras obras-primas. Seja você fã antigo ou recém-chegado ao mundo Ghibli, esta experiência promete encantar, emocionar e despertar a criança que existe em cada um de nós. Venha viver a magia, sentir a aventura e se apaixonar novamente pelo encanto dos filmes do Studio Ghibli!
+            Descubra detalhes dos filmes, conheça os personagens inesquecíveis e mergulhe na arte que transformou simples animações em verdadeiras obras-primas. Venha celebrar a magia do Studio Ghibli conosco!
           </p>
           </div>
         </motion.div>
