@@ -1,37 +1,53 @@
 'use client';
 
 import * as React from 'react';
-import CircularProgress, { CircularProgressProps } from '@mui/material/CircularProgress';
+import CircularProgress from '@mui/material/CircularProgress';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
-import { useParams } from 'next/navigation';
-import { getFilm } from '@/lib/ghibli';
-import { Film } from '@/types/ghibli';
 
-export default function CircularRtScore() {
-  const { id } = useParams();
-  const [film, setFilm] = React.useState<Film | null>(null);
+interface CircularRtScoreProps {
+  score: number; // Valor final do score (0–100)
+}
+
+export default function CircularRtScore({ score }: CircularRtScoreProps) {
+  const [progress, setProgress] = React.useState(0);
+
+  // Determina a cor baseada no score
+  const getColor = (value: number) => {
+    if (value >= 80) return 'success';  
+    if (value >= 60) return 'warning';   
+    return 'error';                     
+  };
 
   React.useEffect(() => {
-    async function fetchFilm() {
-      if (!id) return;
-      try {
-        const data = await getFilm(id as string);
-        setFilm(data);
-      } catch (err) {
-        console.error(err);
+    let current = 0;
+    const step = 3; 
+    const interval = setInterval(() => {
+      current += step;
+      if (current >= score) {
+        current = score;
+        clearInterval(interval);
       }
-    }
-    fetchFilm();
-  }, [id]);
+      setProgress(current);
+    }, 20);
 
-  if (!film) return <p>Carregando...</p>;
+    return () => clearInterval(interval);
+  }, [score]);
 
-  const rtScore = Number(film.rt_score);
-
-  const CircularProgressWithLabel = (props: CircularProgressProps & { value: number }) => (
+  return (
     <Box sx={{ position: 'relative', display: 'inline-flex' }}>
-      <CircularProgress variant="determinate" {...props} />
+      <CircularProgress
+        variant="determinate"
+        value={progress}
+        size={120}
+        thickness={4} 
+        color={getColor(score)} 
+         sx={{
+          '& .MuiCircularProgress-circle': {
+            strokeLinecap: 'round', 
+          },
+        }}
+      />
       <Box
         sx={{
           top: 0,
@@ -44,12 +60,14 @@ export default function CircularRtScore() {
           justifyContent: 'center',
         }}
       >
-        <Typography variant="h6" component="div" sx={{ color: 'text.primary' }}>
-          {`${Math.round(props.value)}%`}
+        <Typography
+          variant="h6"
+          component="div"
+          sx={{ color: 'white', fontWeight: 'bold' }}
+        >
+          {score}
         </Typography>
       </Box>
     </Box>
   );
-
-  return <CircularProgressWithLabel value={rtScore} size={120} />;
 }

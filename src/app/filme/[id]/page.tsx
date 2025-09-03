@@ -1,13 +1,11 @@
-"use client";
+'use client';
 
-import { useEffect, useState } from "react";
-import { useParams } from "next/navigation";
-import { getFilm } from "@/lib/ghibli";
-import { Film } from "@/types/ghibli";
-import {CircularProgress} from '@mui/material';
+import { useEffect, useState } from 'react';
+import { useParams } from 'next/navigation';
+import { getFilm } from '@/lib/ghibli';
+import { Film } from '@/types/ghibli';
 import Box from '@mui/material/Box';
-import CircularWithValueLabel from "@/components/CircularProgressWithLabel";
-import Typografy from "@mui/material/Typography";
+import CircularRtScore from '@/components/CircularProgressWithLabel';
 
 export default function FilmeDetalhe() {
   const { id } = useParams();
@@ -15,13 +13,12 @@ export default function FilmeDetalhe() {
 
   useEffect(() => {
     async function fetchFilme() {
-      if (id) {
-        try {
-          const data = await getFilm(id as string);
-          setFilme(data);
-        } catch (err) {
-          console.error(err);
-        }
+      if (!id) return;
+      try {
+        const data = await getFilm(id as string);
+        setFilme(data);
+      } catch (err) {
+        console.error(err);
       }
     }
     fetchFilme();
@@ -31,30 +28,28 @@ export default function FilmeDetalhe() {
 
   const rtScore = Number(filme.rt_score);
 
-
-
   return (
     <main className="relative min-h-screen bg-gray-100">
+      {/* Fundo */}
       <div className="absolute inset-0">
         <img
           src={filme.movie_banner}
           alt={filme.title}
           className="w-full h-full object-cover"
         />
-        <div className="absolute inset-0 bg-black/30" />
+        <div className="absolute inset-0 bg-black/80" />
       </div>
 
-      <div className="relative z-10 max-w-5xl mx-auto px-6 py-16 ">
+      {/* Conteúdo */}
+      <div className="relative z-10 max-w-5xl mx-auto px-6 py-16">
         <div className="m-8 text-white">
           <h1 className="text-5xl md:text-6xl font-bold mb-6">{filme.title}</h1>
-          <p className="text-2xl"> {filme.original_title} </p>
-          <p>
-            {" "}
-            {filme.release_date} | {filme.running_time} min
-          </p>
+          <p className="text-2xl">{filme.original_title}</p>
+          <p>{filme.release_date} | {filme.running_time} min</p>
         </div>
 
         <div className="flex flex-row p-8 text-white gap-8">
+          {/* Poster */}
           <div>
             <img
               className="rounded-md w-50 object-cover"
@@ -62,27 +57,23 @@ export default function FilmeDetalhe() {
               alt={filme.title}
             />
           </div>
+
+          {/* Descrição */}
           <div className="flex-1 mr-8 items-start gap-10">
             <p className="text-2xl font-semibold">
-              {" "}
-              Direção por: {filme.director}{" "}
+              Direção por: {filme.director}
             </p>
             <p className="text-lg text-gray-100 leading-relaxed mb-8">
               {filme.description}
             </p>
           </div>
-          
-          <div className="items-center justify-center">
-           <Box
-            display="flex"
-            justifyContent="center"
-            alignItems="center"
-            height="100%"
-          >
-            <CircularWithValueLabel />
-          </Box>
+
+          {/* Score com animação */}
+          <div className="flex items-center justify-center">
+            <Box display="flex" justifyContent="center" alignItems="center" height="100%">
+              <CircularRtScore score={rtScore} />
+            </Box>
           </div>
-          <div></div>
         </div>
       </div>
     </main>
