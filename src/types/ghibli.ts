@@ -13,4 +13,8 @@ export type Film = {
   running_time: string;
 }
 
-
+export interface FilmPT extends Film {
+  title_pt: string;
+  description_pt: string;
+  cachedAt: number; 
+}
