@@ -6,6 +6,7 @@ import { getFilm } from '@/lib/ghibli';
 import { Film } from '@/types/ghibli';
 import Box from '@mui/material/Box';
 import CircularRtScore from '@/components/CircularProgressWithLabel';
+import Imagem from 'next/image';
 
 export default function FilmeDetalhe() {
   const { id } = useParams();
@@ -32,7 +33,7 @@ export default function FilmeDetalhe() {
     <main className="relative min-h-screen bg-gray-100">
       {/* Fundo */}
       <div className="absolute inset-0">
-        <img
+        <Imagem
           src={filme.movie_banner}
           alt={filme.title}
           className="w-full h-full object-cover"
@@ -51,7 +52,7 @@ export default function FilmeDetalhe() {
         <div className="flex flex-row p-8 text-white gap-8">
           {/* Poster */}
           <div>
-            <img
+            <Imagem
               className="rounded-md w-50 object-cover"
               src={filme.image}
               alt={filme.title}

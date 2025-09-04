@@ -12,6 +12,7 @@ import {
   CarouselPrevious,
 } from "@/components/ui/carousel";
 import { motion } from "framer-motion";
+import Imagem from "next/image";
 
 export default function Home() {
   const [filmes, setFilmes] = useState<Film[]>([]);
