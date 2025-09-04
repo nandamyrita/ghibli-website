@@ -12,7 +12,7 @@ import {
   CarouselPrevious,
 } from "@/components/ui/carousel";
 import { motion } from "framer-motion";
-import Imagem from "next/image";
+import Image from "next/image";
 
 export default function Home() {
   const [filmes, setFilmes] = useState<Film[]>([]);
@@ -46,7 +46,7 @@ export default function Home() {
           <p className="text-2xl">Main page | Fest 2025</p>
           <h1 className="text-7xl font-bold mt-2">Filmes do Studio Ghibli</h1>
           <p className="mt-4">
-            Prepare-se para embarcar em uma viagem mágica pelo universo encantador dos filmes do Studio Ghibli. Neste festival, você vai explorar mundos repletos de aventura, fantasia e emoção, onde cada história é um convite para sonhar e se inspirar. Desde voos pelos céus em "O Castelo no Céu" até jornadas emocionantes em "A Viagem de Chihiro", o Ghibli Fest 2025 celebra a criatividade, a imaginação e a beleza das narrativas que tocaram gerações.
+            Prepare-se para embarcar em uma viagem mágica pelo universo encantador dos filmes do Studio Ghibli. Neste festival, você vai explorar mundos repletos de aventura, fantasia e emoção, onde cada história é um convite para sonhar e se inspirar. Desde voos pelos céus em O Castelo no Céu até jornadas emocionantes em A Viagem de Chihiro, o Ghibli Fest 2025 celebra a criatividade, a imaginação e a beleza das narrativas que tocaram gerações.
             Descubra detalhes dos filmes, conheça os personagens inesquecíveis e mergulhe na arte que transformou simples animações em verdadeiras obras-primas. Venha celebrar a magia do Studio Ghibli conosco!
           </p>
           </div>
@@ -62,7 +62,7 @@ export default function Home() {
 
                 <Link href={`/filme/${filme.id}`}>
                 
-                <img className="rounded-md w-full object-cover transition-transform duration-300 group-hover:scale-110" src={filme.image} alt={filme.title} />
+                <Image className="rounded-md relative h-full w-full object-cover transition-transform duration-300 group-hover:scale-110" src={filme.image} alt={filme.title} fill />
               
 
                 <div className="text-left flex flex-col">
